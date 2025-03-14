@@ -17,14 +17,14 @@ document.getElementById("getweather").addEventListener("click", function() {
         .then(data => {
             if (data && data.main) {
                 // get the weather details from the API response
-                let cityName = data.name;
+                let placeName = data.name;
                 let temperature = data.main.temp;
                 let description = data.weather[0].description;
                 let humidity = data.main.humidity;
                 let rain = data.rain ? data.rain["1h"] : "No rain";  // Check if rain data exists
 
                 // show the weather details on the website
-                document.getElementById("CityName").textContent = `City: ${cityName}`;
+                document.getElementById("PlaceName").textContent = `Place: ${placeName}`;
                 document.getElementById("Temp").textContent = `Temperature: ${temperature}°C`;
                 document.getElementById("description").textContent = `Description: ${description}`;
                 document.getElementById("humidity").textContent = `Humidity: ${humidity}%`;
