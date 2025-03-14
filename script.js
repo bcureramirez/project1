@@ -1,14 +1,12 @@
 document.getElementById("getweather").addEventListener("click", function() {
-    // Get the city name from the input field
+    //city name from the input box
     let city = document.getElementById("city").value;
     
-    // Your updated API key (make sure it is correct and surrounded by quotes)
-    let apiKey = "4bc143ba17b221f2650111c2dd6032bf";  // Replace with your key
-    
-    // URL to fetch weather data (replace 'city' with the input value)
+    // get api key from the website
+    let apiKey = "4bc143ba17b221f2650111c2dd6032bf";  
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
-    // Fetch weather data
+    //fetch weather data
     fetch(url)
         .then(response => {
             if (!response.ok) {
@@ -18,14 +16,14 @@ document.getElementById("getweather").addEventListener("click", function() {
         })
         .then(data => {
             if (data && data.main) {
-                // Extract relevant weather details from the API response
+                // get the weather details from the API response
                 let cityName = data.name;
                 let temperature = data.main.temp;
                 let description = data.weather[0].description;
                 let humidity = data.main.humidity;
                 let rain = data.rain ? data.rain["1h"] : "No rain";  // Check if rain data exists
 
-                // Display the weather details on the webpage
+                // show the weather details on the website
                 document.getElementById("CityName").textContent = `City: ${cityName}`;
                 document.getElementById("Temp").textContent = `Temperature: ${temperature}°C`;
                 document.getElementById("description").textContent = `Description: ${description}`;
